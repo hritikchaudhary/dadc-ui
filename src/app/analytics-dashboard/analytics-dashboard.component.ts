@@ -1,5 +1,8 @@
+// analytics-dashboard.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { AnalyticsService } from '../analytics.service';
+import { AnalyticsResponse } from '../../model/analytics.dto';
 
 @Component({
   selector: 'app-analytics-dashboard',
@@ -7,17 +10,40 @@ import { AnalyticsService } from '../analytics.service';
   styleUrls: ['./analytics-dashboard.component.scss']
 })
 export class AnalyticsDashboardComponent implements OnInit {
-  totalUniqueUsers: number;
+  analyticsData: AnalyticsResponse = {
+    totalResults: 0,
+    uniqueUsers: 0,
+    totalFailures: 0,
+    pageNumber: 0,
+    pageSize: 0,
+    totalPages: 0,
+    analyticsDTOList: []
+  };
 
   constructor(private analyticsService: AnalyticsService) { }
 
   ngOnInit(): void {
-    this.fetchAnalyticsData();
+    // Initial values for page and size
+    const page = 0;
+    const size = 20;
+    this.fetchAnalyticsData(page, size);
   }
 
-  fetchAnalyticsData() {
-    const analyticsData = this.analyticsService.getAnalyticsData();
-    this.totalUniqueUsers = analyticsData.totalUniqueUsers;
-    // Fetch other analytics data if needed...
+  fetchAnalyticsData(page: number, size: number) {
+    this.analyticsService.getAnalyticsData(page, size).subscribe (
+      (data: AnalyticsResponse) => {
+        this.analyticsData.totalResults = data.totalResults;
+        this.analyticsData.uniqueUsers = data.uniqueUsers;
+        this.analyticsData.totalFailures = data.totalFailures;
+        this.analyticsData.pageNumber = data.pageNumber;
+        this.analyticsData.pageSize = data.pageSize;
+        this.analyticsData.totalPages = data.totalPages;
+        this.analyticsData.analyticsDTOList = data.analyticsDTOList;
+      },
+      (error: any) => {
+        console.error('Error fetching analytics data:', error);
+        console.log("kuch galat ho raha hai")
+      }
+    );
   }
 }
