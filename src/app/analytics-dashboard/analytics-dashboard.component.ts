@@ -5,7 +5,6 @@ import { MatSort } from '@angular/material/sort';
 import { AnalyticsResponse } from '../../dto/analytics.dto';
 import { MatSortable } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { DateRange } from 'src/dto/date-range.dto';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 
@@ -27,9 +26,10 @@ export class AnalyticsDashboardComponent {
   selectedTimeFilter: string = 'last24';
   displayedColumns: string[] = ['createdAt', 'userID', 'status', 'errorMessage', 'request', 'response'];
   dataSource = new MatTableDataSource();
-  customDateRange: DateRange = { startDate: null, endDate: null }; // Example DateRange model
-
-  constructor(private analyticsService: AnalyticsService) { }
+  startDate!: Date | null;
+  endDate!: Date | null;
+  constructor(private analyticsService: AnalyticsService) {
+  }
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   pageSize = 10; // Number of items to load initially and on scroll
@@ -45,11 +45,12 @@ export class AnalyticsDashboardComponent {
   }
 
   loadInitialData() {
-    this.fetchAnalyticsData(this.currentPage, this.pageSize);
+    console.log("triggerres");
+    this.fetchAnalyticsData(this.currentPage, this.pageSize, this.startDate, this.endDate);
   }
 
-  fetchAnalyticsData(page: number, size: number) {
-    this.analyticsService.getAnalyticsData(page, size).subscribe(
+  fetchAnalyticsData(page: number, size: number, startDate: Date | null, endDate: Date | null) {
+    this.analyticsService.getAnalyticsData(page, size, startDate, endDate).subscribe(
       (data: AnalyticsResponse) => {
         this.analyticsData = data;
         this.dataSource.data = this.analyticsData.analyticsDTOList;
@@ -63,7 +64,7 @@ export class AnalyticsDashboardComponent {
   onPageChange(event: any) {
     const pageIndex = event.pageIndex;
     const pageSize = event.pageSize;
-    this.fetchAnalyticsData(pageIndex, pageSize)
+    this.fetchAnalyticsData(pageIndex, pageSize, this.startDate, this.endDate)
   }
 
   getStatusClass(status: string): string {
@@ -78,26 +79,25 @@ export class AnalyticsDashboardComponent {
   onTimeFilterChange() {
     const currentDate = new Date(); // Get current date/time
     if (this.selectedTimeFilter === 'last24') {
-      const startDate = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000)); // 24 hours ago
-      this.customDateRange = { startDate, endDate: currentDate };
-      console.log(this.customDateRange);
+      this.startDate = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000)); // 24 hours ago
+      this.endDate = currentDate;
     } else if (this.selectedTimeFilter === 'last7') {
-      const startDate = new Date(currentDate.getTime() - (7 * 24 * 60 * 60 * 1000)); // 7 days ago
-      this.customDateRange = { startDate, endDate: currentDate };
-      console.log(this.customDateRange);
+      this.startDate = new Date(currentDate.getTime() - (7 * 24 * 60 * 60 * 1000)); // 7 days ago
+      this.endDate = currentDate;
     } else {
-      this.customDateRange = { startDate: null, endDate: null };
+      this.startDate = null;
+      this.endDate = null;
     }
+    this.loadInitialData();
   }
   onDateChange(type: string, event: MatDatepickerInputEvent<Date>) {
     const selectedDate = event.value;
 
     if (type === 'start') {
-      this.customDateRange.startDate = selectedDate;
-      console.log(this.customDateRange);
+      this.startDate = selectedDate;
     } else if (type === 'end') {
-      this.customDateRange.endDate = selectedDate;
-      console.log(this.customDateRange);
+      this.endDate = selectedDate;
     }
+    this.loadInitialData();
   }
 }
