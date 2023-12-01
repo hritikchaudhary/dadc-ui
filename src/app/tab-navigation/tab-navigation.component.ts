@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tab-navigation.component.scss']
 })
 export class TabNavigationComponent {
-  showFiller = false;
+
 }
