@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+.table {
+  margin: 20px;
+}
+
+.success-status,
+.failure-status {
+  display: inline-block;
+  border-radius: 30px;
+  padding: 6px 12px;
+  width: 70%;
+  text-align: center;
+}
+
+.success-status {
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.failure-status {
+  border: 2px solid #F44336;
+  color: #F44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}

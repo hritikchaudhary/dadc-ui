@@ -14,11 +14,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { TabNavigationComponent } from './tab-navigation/tab-navigation.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { AnalyticsTableComponent } from './analytics-table/analytics-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AnalyticsDashboardComponent
+    AnalyticsDashboardComponent,
+    TabNavigationComponent,
+    AnalyticsTableComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
     BrowserAnimationsModule,
   ],
   providers: [],

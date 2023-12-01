@@ -1,7 +1,7 @@
 <div class="time-filter-container">
   <div class="time-filter">
     <mat-form-field appearance="fill">
-      <mat-label>Select Time Filter</mat-label>
+      <mat-label>Time Filter</mat-label>
       <mat-select [(value)]="selectedTimeFilter" (selectionChange)="onTimeFilterChange()">
         <mat-option value="last24">Last 24 hours</mat-option>
         <mat-option value="last7">Last 7 days</mat-option>
@@ -24,53 +24,4 @@
   </div>
 </div>
 
-
-<div class="table">
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-    <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by createdAt">
-        Timestamp
-      </th>
-      <td mat-cell *matCellDef="let element"> {{ element.createdAt | date: 'medium' }} </td>
-    </ng-container>
-    <ng-container matColumnDef="userID">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by userID">
-        User ID
-      </th>
-      <td mat-cell *matCellDef="let element"> {{element.userID || 'no value' }} </td>
-    </ng-container>
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by status">
-        Status
-      </th>
-      <td mat-cell *matCellDef="let element">
-        <div [ngClass]="getStatusClass(element.status)">
-          {{element.status || 'no value' }}
-        </div>
-      </td>
-    </ng-container>
-    <ng-container matColumnDef="errorMessage">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by errorMessage">
-        Error Message
-      </th>
-      <td mat-cell *matCellDef="let element"> {{element.errorMessage}} </td>
-    </ng-container>
-    <ng-container matColumnDef="request">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by request">
-        Request
-      </th>
-      <td mat-cell *matCellDef="let element"> {{element.request || 'no value' }} </td>
-    </ng-container>
-    <ng-container matColumnDef="response">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by response">
-        Response
-      </th>
-      <td mat-cell *matCellDef="let element"> {{element.response || 'no value' }} </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [length]="analyticsData.totalResults" [pageSize]="10" [pageSizeOptions]="[10, 15, 20]"
-    (page)="onPageChange($event)">
-  </mat-paginator>
-</div>
+<app-analytics-table [analyticsData]="analyticsData" (pageChangeEvent)="handlePageChange($event)" [dataSource]="dataSource"></app-analytics-table>

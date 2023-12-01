@@ -1,10 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { AnalyticsService } from '../analytics.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
 import { AnalyticsResponse } from '../../dto/analytics.dto';
-import { MatSortable } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 
@@ -24,28 +21,21 @@ export class AnalyticsDashboardComponent {
     analyticsDTOList: []
   };
   selectedTimeFilter: string = 'last24';
-  displayedColumns: string[] = ['createdAt', 'userID', 'status', 'errorMessage', 'request', 'response'];
+
   dataSource = new MatTableDataSource();
-  startDate!: Date | null;
-  endDate!: Date | null;
-  constructor(private analyticsService: AnalyticsService) {
-  }
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  startDate: Date | null = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));;
+  endDate: Date | null = new Date();
+  constructor(private analyticsService: AnalyticsService) { }
   pageSize = 10; // Number of items to load initially and on scroll
   currentPage = 0; // Current page number
 
   ngAfterViewInit() {
     setTimeout(() => {
-      this.dataSource.sort = this.sort;
-      this.sort.sort(({ id: 'createdAt', start: 'desc' } as MatSortable));
       this.loadInitialData();
-      this.onTimeFilterChange();
     });
   }
 
   loadInitialData() {
-    console.log("triggerres");
     this.fetchAnalyticsData(this.currentPage, this.pageSize, this.startDate, this.endDate);
   }
 
@@ -61,34 +51,25 @@ export class AnalyticsDashboardComponent {
     );
   }
 
-  onPageChange(event: any) {
-    const pageIndex = event.pageIndex;
-    const pageSize = event.pageSize;
-    this.fetchAnalyticsData(pageIndex, pageSize, this.startDate, this.endDate)
-  }
-
-  getStatusClass(status: string): string {
-    if (status === 'Success') {
-      return 'success-status';
-    } else if (status === 'Failure') {
-      return 'failure-status';
-    }
-    return '';
+  handlePageChange(event: any) {
+    const { pageIndex, pageSize } = event;
+    this.fetchAnalyticsData(pageIndex, pageSize, this.startDate, this.endDate);
   }
 
   onTimeFilterChange() {
-    const currentDate = new Date(); // Get current date/time
+    const currentDate = new Date();
     if (this.selectedTimeFilter === 'last24') {
       this.startDate = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000)); // 24 hours ago
       this.endDate = currentDate;
+      this.loadInitialData();
     } else if (this.selectedTimeFilter === 'last7') {
       this.startDate = new Date(currentDate.getTime() - (7 * 24 * 60 * 60 * 1000)); // 7 days ago
       this.endDate = currentDate;
+      this.loadInitialData();
     } else {
       this.startDate = null;
       this.endDate = null;
     }
-    this.loadInitialData();
   }
   onDateChange(type: string, event: MatDatepickerInputEvent<Date>) {
     const selectedDate = event.value;
@@ -98,6 +79,8 @@ export class AnalyticsDashboardComponent {
     } else if (type === 'end') {
       this.endDate = selectedDate;
     }
-    this.loadInitialData();
+    if(this.startDate && this.endDate){
+      this.loadInitialData();
+    }
   }
 }
