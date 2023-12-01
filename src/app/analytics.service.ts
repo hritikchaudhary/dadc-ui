@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AnalyticsResponse } from '../model/analytics.dto';
+import { AnalyticsResponse } from '../dto/analytics.dto';
 
 @Injectable({
   providedIn: 'root'
