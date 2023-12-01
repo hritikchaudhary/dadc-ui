@@ -24,4 +24,15 @@
   </div>
 </div>
 
-<app-analytics-table [analyticsData]="analyticsData" (pageChangeEvent)="handlePageChange($event)" [dataSource]="dataSource"></app-analytics-table>
+
+<mat-card class="custom-card">
+  <mat-card-content>
+    <div>
+      <app-analytics-chart [selectedTimeFilter]="selectedTimeFilter" [startDate]="startDate" [endDate]="endDate" ></app-analytics-chart>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+<app-analytics-table [analyticsData]="analyticsData" (pageChangeEvent)="handlePageChange($event)"
+  [dataSource]="dataSource"></app-analytics-table>

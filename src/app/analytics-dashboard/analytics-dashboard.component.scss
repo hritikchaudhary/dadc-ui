@@ -19,40 +19,66 @@
   margin: 0;
 }
 
-
 .time-filter-container {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Adjust alignment as needed */
-  padding: 20px; /* Adjust padding as needed */
+  align-items: center;
+  /* Adjust alignment as needed */
+  padding: 20px;
+  /* Adjust padding as needed */
 }
 
 .time-filter {
-  margin-right: 20px; /* Add some space between the filter and other content */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  margin-right: 20px;
+  /* Add some space between the filter and other content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add shadow */
 }
 
 
 
 /* Additional styling can be applied to enhance the appearance */
 .mat-form-field {
-  width: 250px; /* Set a specific width for consistency */
+  width: 250px;
+  /* Set a specific width for consistency */
 }
 
 /* Adjust appearance for the dropdown arrow icon */
 .mat-select-arrow-wrapper {
-  right: 10px; /* Align the arrow icon to the right */
+  right: 10px;
+  /* Align the arrow icon to the right */
 }
 
 ::ng-deep {
   .mat-mdc-form-field-subscript-wrapper {
     display: none !important;
   }
+
   .mdc-line-ripple::before {
     border-bottom-width: 0px !important;
   }
 }
 
 .custom-date-range {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Add shadow */
+}
+
+/* Adjust these styles according to your layout needs */
+.quarter-screen {
+  display: flex;
+  height: 100vh; /* Set height of the container to full viewport height */
+}
+
+::ng-deep{
+
+  .custom-card {
+    height: 50vh; /* Half of screen height */
+    width: 50vw; /* Half of screen width */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding box shadow */
+    margin-left: 20px; /* Adding left margin */
+
+    /* Optional: Centering the card horizontally and vertically */
+  }
+
 }

@@ -18,6 +18,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { AnalyticsTableComponent } from './analytics-table/analytics-table.component';
 import { TabNavigationComponent } from './tab-navigation/tab-navigation.component';
 import { AnalyticsChartComponent } from './analytics-chart/analytics-chart.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AnalyticsChartComponent } from './analytics-chart/analytics-chart.compo
     MatPaginatorModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCardModule,
     MatTabsModule,
     BrowserAnimationsModule,
   ],

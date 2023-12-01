@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { AnalyticsService } from '../analytics.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { AnalyticsResponse } from '../../dto/analytics.dto';
@@ -21,13 +21,15 @@ export class AnalyticsDashboardComponent {
     analyticsDTOList: []
   };
   selectedTimeFilter: string = 'last24';
-
   dataSource = new MatTableDataSource();
-  startDate: Date | null = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));;
+  startDate: Date | null = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
   endDate: Date | null = new Date();
   constructor(private analyticsService: AnalyticsService) { }
   pageSize = 10; // Number of items to load initially and on scroll
   currentPage = 0; // Current page number
+
+
+    // Data arrays for users, calls, and failures over time
 
   ngAfterViewInit() {
     setTimeout(() => {
