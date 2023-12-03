@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AnalyticsResponse } from '../dto/analytics.dto';
+import { AnalyticsResponse, ChartData } from '../dto/analytics.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +39,20 @@ export class AnalyticsService {
     }
 
     return this.http.get<AnalyticsResponse>(apiUrl);
+  }
+  getChartAnalyticsData(
+    startDate: Date | null,
+    endDate: Date | null
+  ): Observable<ChartData> {
+    let apiUrl = `${environment.apiUrl}statsByDate`;
+
+    const startDateFormat = this.formatDate(startDate);
+    const endDateFormat = this.formatDate(endDate);
+
+    if (startDateFormat && endDateFormat) {
+      apiUrl += `?startDate=${startDateFormat}&endDate=${endDateFormat}`;
+    }
+
+    return this.http.get<ChartData>(apiUrl);
   }
 }

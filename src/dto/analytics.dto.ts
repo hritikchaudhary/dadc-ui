@@ -18,3 +18,10 @@ export class AnalyticsResponse {
   totalPages!: number;
   analyticsDTOList!: AnalyticsDTO[];
 }
+
+export class ChartData {
+  uniqueUsers!: number[];
+  totalNumberOfCalls!: number[];
+  totalNumberOfFailures!: number[];
+  chartLabels!: string[];
+}

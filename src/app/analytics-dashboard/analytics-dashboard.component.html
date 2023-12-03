@@ -24,15 +24,39 @@
   </div>
 </div>
 
+<div class="chart-container">
+  <mat-card class="chart-card">
+    <mat-card-content>
+      <div>
+        <app-analytics-chart [startDate]="startDate" [endDate]="endDate" ></app-analytics-chart>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="other-cards">
+    <mat-card class="call-failure-card">
+      <mat-card-content>
+        call failure
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="unique-user-card">
+      <mat-card-content>
+        unique user
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="other-cards">
+    <mat-card class="call-failure-card">
+      <mat-card-content>
+        call failure
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="unique-user-card">
+      <mat-card-content>
+        unique user
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-<mat-card class="custom-card">
-  <mat-card-content>
-    <div>
-      <app-analytics-chart [selectedTimeFilter]="selectedTimeFilter" [startDate]="startDate" [endDate]="endDate" ></app-analytics-chart>
-    </div>
-  </mat-card-content>
-</mat-card>
-
-
+</div>
 <app-analytics-table [analyticsData]="analyticsData" (pageChangeEvent)="handlePageChange($event)"
   [dataSource]="dataSource"></app-analytics-table>
