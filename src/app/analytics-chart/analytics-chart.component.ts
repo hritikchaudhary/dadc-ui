@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import Chart from 'chart.js/auto';
+import {  Chart, ChartType} from 'chart.js/auto';
 import { AnalyticsService } from '../analytics.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -49,7 +49,7 @@ export class AnalyticsChartComponent {
       this.lineChart.destroy();
     }
     this.lineChart = new Chart('canvas', {
-      type: 'line',
+      type: 'line' as ChartType,
       data: {
         labels: labels,
         datasets: [
@@ -99,7 +99,7 @@ export class AnalyticsChartComponent {
       ],
     };
     this.donutChart = new Chart('canvas2', {
-      type: 'doughnut',
+      type: 'doughnut' as ChartType,
       data: donutData,
       options: options,
     });
