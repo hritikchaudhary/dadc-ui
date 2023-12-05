@@ -4,11 +4,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AnalyticsResponse } from '../../dto/analytics.dto';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
-
 @Component({
   selector: 'app-analytics-dashboard',
   templateUrl: './analytics-dashboard.component.html',
-  styleUrls: ['./analytics-dashboard.component.scss']
+  styleUrls: ['./analytics-dashboard.component.scss'],
 })
 export class AnalyticsDashboardComponent {
   analyticsData: AnalyticsResponse = {
@@ -18,23 +17,20 @@ export class AnalyticsDashboardComponent {
     pageNumber: 0,
     pageSize: 0,
     totalPages: 0,
-    analyticsDTOList: []
+    analyticsDTOList: [],
   };
-
 
   selectedTimeFilter: string = 'last24';
   dataSource = new MatTableDataSource();
 
-
-  startDate: Date | null = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
+  startDate: Date | null = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
   endDate: Date | null = new Date();
   maxDate: Date = new Date();
 
   pageSize = 10; // Number of items to load initially and on scroll
   currentPage = 0; // Current page number
 
-
-  constructor(private analyticsService: AnalyticsService) { }
+  constructor(private analyticsService: AnalyticsService) {}
 
   // Data arrays for users, calls, and failures over time
 
@@ -45,19 +41,31 @@ export class AnalyticsDashboardComponent {
   }
 
   loadInitialData() {
-    this.fetchAnalyticsData(this.currentPage, this.pageSize, this.startDate, this.endDate);
+    this.fetchAnalyticsData(
+      this.currentPage,
+      this.pageSize,
+      this.startDate,
+      this.endDate,
+    );
   }
 
-  fetchAnalyticsData(page: number, size: number, startDate: Date | null, endDate: Date | null) {
-    this.analyticsService.getAnalyticsData(page, size, startDate, endDate).subscribe(
-      (data: AnalyticsResponse) => {
-        this.analyticsData = data;
-        this.dataSource.data = this.analyticsData.analyticsDTOList;
-      },
-      (error: any) => {
-        console.error('Error fetching analytics data:', error);
-      }
-    );
+  fetchAnalyticsData(
+    page: number,
+    size: number,
+    startDate: Date | null,
+    endDate: Date | null,
+  ) {
+    this.analyticsService
+      .getAnalyticsData(page, size, startDate, endDate)
+      .subscribe(
+        (data: AnalyticsResponse) => {
+          this.analyticsData = data;
+          this.dataSource.data = this.analyticsData.analyticsDTOList;
+        },
+        (error: any) => {
+          console.error('Error fetching analytics data:', error);
+        },
+      );
   }
 
   handlePageChange(event: any) {
@@ -68,11 +76,13 @@ export class AnalyticsDashboardComponent {
   onTimeFilterChange() {
     const currentDate = new Date();
     if (this.selectedTimeFilter === 'last24') {
-      this.startDate = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000)); // 24 hours ago
+      this.startDate = new Date(currentDate.getTime() - 24 * 60 * 60 * 1000); // 24 hours ago
       this.endDate = currentDate;
       this.loadInitialData();
     } else if (this.selectedTimeFilter === 'last7') {
-      this.startDate = new Date(currentDate.getTime() - (7 * 24 * 60 * 60 * 1000)); // 7 days ago
+      this.startDate = new Date(
+        currentDate.getTime() - 7 * 24 * 60 * 60 * 1000,
+      ); // 7 days ago
       this.endDate = currentDate;
       this.loadInitialData();
     } else {
@@ -92,8 +102,8 @@ export class AnalyticsDashboardComponent {
       this.loadInitialData();
     }
   }
-  handleHelloCallResponseEvent(){
-    console.log("working");
+  handleHelloCallResponseEvent() {
+    console.log('working');
     this.ngAfterViewInit();
   }
 }

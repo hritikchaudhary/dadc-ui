@@ -23,7 +23,6 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     AnalyticsDashboardComponent,
     AnalyticsTableComponent,
     TabNavigationComponent,
-    AnalyticsChartComponent
+    AnalyticsChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +46,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatNativeDateModule,
     MatCardModule,
     MatTabsModule,
-    MatSidenavModule,
     MatButtonModule,
     MatSnackBarModule,
     MatIconModule,
@@ -55,6 +53,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

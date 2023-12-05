@@ -2,7 +2,10 @@
   <div class="time-filter">
     <mat-form-field appearance="fill">
       <mat-label>Time Filter</mat-label>
-      <mat-select [(value)]="selectedTimeFilter" (selectionChange)="onTimeFilterChange()">
+      <mat-select
+        [(value)]="selectedTimeFilter"
+        (selectionChange)="onTimeFilterChange()"
+      >
         <mat-option value="last24">Last 24 hours</mat-option>
         <mat-option value="last7">Last 7 days</mat-option>
         <mat-option value="custom">Custom time range</mat-option>
@@ -14,21 +17,39 @@
     <mat-form-field>
       <mat-label>Enter a date range</mat-label>
       <mat-date-range-input [rangePicker]="picker" [max]="maxDate">
-        <input matStartDate placeholder="Start date" (dateChange)="onDateChange('start', $event)">
-        <input matEndDate placeholder="End date" (dateChange)="onDateChange('end', $event)">
+        <input
+          matStartDate
+          placeholder="Start date"
+          (dateChange)="onDateChange('start', $event)"
+        />
+        <input
+          matEndDate
+          placeholder="End date"
+          (dateChange)="onDateChange('end', $event)"
+        />
       </mat-date-range-input>
       <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
       <mat-date-range-picker #picker></mat-date-range-picker>
     </mat-form-field>
   </div>
 </div>
 
-<app-analytics-chart [startDate]="startDate" [endDate]="endDate" [totalCalls]="analyticsData.totalResults"
-  [totalFailures]="analyticsData.totalFailures" [totalUniqueUsers]="analyticsData.uniqueUsers"
-  (helloCallResponseEvent)="handleHelloCallResponseEvent()"></app-analytics-chart>
+<app-analytics-chart
+  [startDate]="startDate"
+  [endDate]="endDate"
+  [totalCalls]="analyticsData.totalResults"
+  [totalFailures]="analyticsData.totalFailures"
+  [totalUniqueUsers]="analyticsData.uniqueUsers"
+  (helloCallResponseEvent)="handleHelloCallResponseEvent()"
+></app-analytics-chart>
 
-
-<app-analytics-table [analyticsData]=" analyticsData" (pageChangeEvent)="handlePageChange($event)"
-  [dataSource]="dataSource">
+<app-analytics-table
+  [analyticsData]="analyticsData"
+  (pageChangeEvent)="handlePageChange($event)"
+  [dataSource]="dataSource"
+>
 </app-analytics-table>

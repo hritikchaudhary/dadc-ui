@@ -8,9 +8,8 @@ describe('AnalyticsChartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnalyticsChartComponent ]
-    })
-    .compileComponents();
+      declarations: [AnalyticsChartComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AnalyticsChartComponent);
     component = fixture.componentInstance;

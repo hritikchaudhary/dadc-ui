@@ -1,52 +1,74 @@
 <form #form="ngForm" class="custom-form">
   <mat-form-field class="custom-field">
     <mat-icon matPrefix>account_circle</mat-icon>
-    <input matInput placeholder="User ID (Error logged if absent)" name="userId" ngModel>
+    <input
+      matInput
+      placeholder="User ID (Error logged if absent)"
+      name="userId"
+      ngModel
+    />
   </mat-form-field>
   <mat-form-field class="custom-field">
     <mat-icon matPrefix>calendar_today</mat-icon>
-    <input matInput [matDatepicker]="picker" placeholder="Select Date" name="selectedDate" ngModel [max]="maxDate">
+    <input
+      matInput
+      [matDatepicker]="picker"
+      placeholder="Select Date"
+      name="selectedDate"
+      ngModel
+      [max]="maxDate"
+    />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="callAPI(form.value)" class="custom-button">
-  Call API
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="callAPI(form.value)"
+    class="custom-button"
+  >
+    Call API
   </button>
 </form>
 
-<div class="chart-container" style="margin-left: 20px; margin-top: 20px;">
+<div class="chart-container" style="margin-left: 20px; margin-top: 20px">
   <mat-card class="chart-card">
-    <mat-card-content style="text-align: center; font-size: 20px;">
+    <mat-card-content style="text-align: center; font-size: 20px">
       <mat-icon>show_chart</mat-icon>
       Trend Analysis of User Activity and Call Performance
       <div>
-        <div class="chart-container" style="position: relative; height:45vh; width:47vw">
-          <canvas id="canvas">{{lineChart}}</canvas>
+        <div
+          class="chart-container"
+          style="position: relative; height: 45vh; width: 47vw"
+        >
+          <canvas id="canvas">{{ lineChart }}</canvas>
         </div>
       </div>
     </mat-card-content>
   </mat-card>
 
   <mat-card class="call-failure-card">
-    <mat-card-content style="text-align: center; font-size: 20px;">
+    <mat-card-content style="text-align: center; font-size: 20px">
       <mat-icon>analytics</mat-icon> Call Success Rate
       <div class="chart-container-donut">
-        <canvas id="canvas2">{{donutChart}}</canvas>
+        <canvas id="canvas2">{{ donutChart }}</canvas>
       </div>
     </mat-card-content>
   </mat-card>
 
   <div class="vertical-card">
-    <mat-card class="unique-user-card" style="margin-bottom: 20px;">
-      <mat-card-content style="text-align:center; font-size: 20px;">
+    <mat-card class="unique-user-card" style="margin-bottom: 20px">
+      <mat-card-content style="text-align: center; font-size: 20px">
         <mat-icon>call</mat-icon> Total Calls
-        <div style="font-size: 100px; margin-top: 65px;">{{totalCalls}}</div>
+        <div style="font-size: 100px; margin-top: 65px">{{ totalCalls }}</div>
       </mat-card-content>
     </mat-card>
     <mat-card class="unique-user-card">
-      <mat-card-content style="text-align:center; font-size: 20px;">
+      <mat-card-content style="text-align: center; font-size: 20px">
         <mat-icon>group</mat-icon> Unique Users
-        <div style="font-size: 100px; margin-top: 65px;">{{totalUniqueUsers}}</div>
+        <div style="font-size: 100px; margin-top: 65px">
+          {{ totalUniqueUsers }}
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

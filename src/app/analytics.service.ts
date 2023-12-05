@@ -7,13 +7,12 @@ import { environment } from 'src/environments/environment';
 import { AnalyticsResponse, ChartData } from '../dto/analytics.dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class AnalyticsService {
   constructor(private http: HttpClient) {}
 
-  formatDate(date: Date|null): string {
+  formatDate(date: Date | null): string {
     if (!date) {
       return '';
     }
@@ -27,7 +26,7 @@ export class AnalyticsService {
     page: number,
     size: number,
     startDate: Date | null,
-    endDate: Date | null
+    endDate: Date | null,
   ): Observable<AnalyticsResponse> {
     let apiUrl = `${environment.apiUrl}stats?page=${page}&size=${size}`;
 
@@ -42,7 +41,7 @@ export class AnalyticsService {
   }
   getChartAnalyticsData(
     startDate: Date | null,
-    endDate: Date | null
+    endDate: Date | null,
   ): Observable<ChartData> {
     let apiUrl = `${environment.apiUrl}statsByDate`;
 
@@ -57,8 +56,8 @@ export class AnalyticsService {
   }
   postHelloData(userID: string, date: Date) {
     let apiUrl = `${environment.apiUrl}hello?userID=${userID}`;
-    if(date){
-      apiUrl+= `&createdAt=${this.formatDate(date)}`
+    if (date) {
+      apiUrl += `&createdAt=${this.formatDate(date)}`;
     }
     const httpOptions = {
       headers: new HttpHeaders({
@@ -68,6 +67,4 @@ export class AnalyticsService {
     };
     return this.http.post(apiUrl, null, httpOptions);
   }
-
-
 }

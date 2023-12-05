@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSortable } from '@angular/material/sort';
@@ -6,21 +12,27 @@ import { MatSortable } from '@angular/material/sort';
 @Component({
   selector: 'app-analytics-table',
   templateUrl: './analytics-table.component.html',
-  styleUrls: ['./analytics-table.component.scss']
+  styleUrls: ['./analytics-table.component.scss'],
 })
 export class AnalyticsTableComponent {
-
   @Input() analyticsData: any;
   @Output() pageChangeEvent = new EventEmitter<any>();
   @ViewChild(MatSort) sort!: MatSort;
   @Input() dataSource: any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  displayedColumns: string[] = ['createdAt', 'userID', 'status', 'errorMessage', 'request', 'response'];
+  displayedColumns: string[] = [
+    'createdAt',
+    'userID',
+    'status',
+    'errorMessage',
+    'request',
+    'response',
+  ];
 
   ngAfterViewInit() {
     setTimeout(() => {
       this.dataSource.sort = this.sort;
-      this.sort.sort(({ id: 'createdAt', start: 'desc' } as MatSortable));
+      this.sort.sort({ id: 'createdAt', start: 'desc' } as MatSortable);
     });
   }
   onPageChange(event: any) {
@@ -37,5 +49,4 @@ export class AnalyticsTableComponent {
     }
     return '';
   }
-
 }
