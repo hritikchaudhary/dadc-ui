@@ -65,46 +65,7 @@
 }
 
 /* Adjust these styles according to your layout needs */
-.quarter-screen {
-  display: flex;
-  height: 100vh; /* Set height of the container to full viewport height */
-}
-
-::ng-deep{
-
-  .chart-card {
-    height: 60vh; /* Half of screen height */
-    width: 50vw; /* Half of screen width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding box shadow */
-    /* Optional: Centering the card horizontally and vertically */
-  }
-
-  .call-failure-card {
-    height: 28.5vh; /* Half of screen height */
-    width: 22vw; /* Half of screen width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding box shadow */
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-
-  }
-  .unique-user-card {
-    height: 28.5vh; /* Half of screen height */
-    width: 22vw; /* Half of screen width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding box shadow */
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    margin-right: 10px;
-  }
-
-}
-
-.chart-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  /* Adjust alignment as needed */
-  padding: 20px;
-  /* Adjust padding as needed */
-}
+// .quarter-screen {
+//     display: flex;
+//     height: 100vh; /* Set height of the container to full viewport height */
+//   }

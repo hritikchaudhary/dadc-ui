@@ -13,7 +13,7 @@
   <div *ngIf="selectedTimeFilter === 'custom'" class="custom-date-range">
     <mat-form-field>
       <mat-label>Enter a date range</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
+      <mat-date-range-input [rangePicker]="picker" [max]="maxDate">
         <input matStartDate placeholder="Start date" (dateChange)="onDateChange('start', $event)">
         <input matEndDate placeholder="End date" (dateChange)="onDateChange('end', $event)">
       </mat-date-range-input>
@@ -24,39 +24,8 @@
   </div>
 </div>
 
-<div class="chart-container">
-  <mat-card class="chart-card">
-    <mat-card-content>
-      <div>
-        <app-analytics-chart [startDate]="startDate" [endDate]="endDate" ></app-analytics-chart>
-      </div>
-    </mat-card-content>
-  </mat-card>
-  <div class="other-cards">
-    <mat-card class="call-failure-card">
-      <mat-card-content>
-        call failure
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="unique-user-card">
-      <mat-card-content>
-        unique user
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <div class="other-cards">
-    <mat-card class="call-failure-card">
-      <mat-card-content>
-        call failure
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="unique-user-card">
-      <mat-card-content>
-        unique user
-      </mat-card-content>
-    </mat-card>
-  </div>
+<app-analytics-chart [startDate]="startDate" [endDate]="endDate" [totalCalls]="analyticsData.totalResults" [totalFailures]="analyticsData.totalFailures" [totalUniqueUsers]="analyticsData.uniqueUsers"></app-analytics-chart>
 
-</div>
+
 <app-analytics-table [analyticsData]="analyticsData" (pageChangeEvent)="handlePageChange($event)"
   [dataSource]="dataSource"></app-analytics-table>

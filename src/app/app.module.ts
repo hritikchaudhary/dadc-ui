@@ -13,12 +13,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
 import { AnalyticsTableComponent } from './analytics-table/analytics-table.component';
 import { TabNavigationComponent } from './tab-navigation/tab-navigation.component';
 import { AnalyticsChartComponent } from './analytics-chart/analytics-chart.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import {MatCardModule} from '@angular/material/card';
     MatNativeDateModule,
     MatCardModule,
     MatTabsModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    FormsModule,
     BrowserAnimationsModule,
   ],
   providers: [],

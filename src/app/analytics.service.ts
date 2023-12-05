@@ -1,7 +1,7 @@
 // analytics.service.ts
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AnalyticsResponse, ChartData } from '../dto/analytics.dto';
@@ -55,4 +55,19 @@ export class AnalyticsService {
 
     return this.http.get<ChartData>(apiUrl);
   }
+  postHelloData(userID: string, date: Date) {
+    let apiUrl = `${environment.apiUrl}hello?userID=${userID}`;
+    if(date){
+      apiUrl+= `&createdAt=${this.formatDate(date)}`
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      responseType: 'text' as 'json', // Set the response type to text explicitly
+    };
+    return this.http.post(apiUrl, null, httpOptions);
+  }
+
+
 }

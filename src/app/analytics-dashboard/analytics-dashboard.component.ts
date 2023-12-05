@@ -28,6 +28,7 @@ export class AnalyticsDashboardComponent {
 
   startDate: Date | null = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
   endDate: Date | null = new Date();
+  maxDate: Date = new Date();
 
   pageSize = 10; // Number of items to load initially and on scroll
   currentPage = 0; // Current page number
