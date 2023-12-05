@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class TabNavigationComponent {
 
+  navigateTo(url: string) {
+    window.open(url, '_blank');
+  }
+
 }

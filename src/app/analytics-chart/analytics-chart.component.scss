@@ -1,26 +1,19 @@
 .chart-container-donut {
-  margin-top: 50px;
+  margin-top: 45px;
 }
 
 ::ng-deep {
 
   .chart-card {
     height: 60vh;
-    /* Half of screen height */
     width: 50vw;
-    /* Half of screen width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Adding box shadow */
-    /* Optional: Centering the card horizontally and vertically */
   }
 
   .call-failure-card {
     height: 60vh;
-    /* Half of screen height */
     width: 22vw;
-    /* Half of screen width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Adding box shadow */
     margin-top: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
@@ -30,35 +23,32 @@
 
   .unique-user-card {
     height: 28.5vh;
-    /* Half of screen height */
     width: 22vw;
-    /* Half of screen width */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Adding box shadow */
     margin-left: 20px;
     margin-right: 10px;
 
   }
 
 }
-.hello-api-card{
-  text-align: right; margin-top: -80px; margin-left: 600px;
+
+.hello-api-card {
+  text-align: right;
+  margin-top: -80px;
+  margin-left: 600px;
 }
+
 .chart-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* Adjust alignment as needed */
-  /* Adjust padding as needed */
+  margin-top: 20px;
 }
 
 .vertical-card {
   display: flex;
   flex-direction: column;
 }
-
-
-
 
 .custom-form {
   text-align: right;
@@ -83,6 +73,7 @@
   margin-left: 10px;
   margin-right: 40px;
 }
+
 :host ::ng-deep .custom-form {
   text-align: right;
   margin-top: -75px;
@@ -107,3 +98,8 @@
   margin-right: 40px;
 }
 
+.mat-icon {
+  vertical-align: middle;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}

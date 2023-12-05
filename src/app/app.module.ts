@@ -22,6 +22,8 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatCardModule,
     MatTabsModule,
+    MatSidenavModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatIconModule,
     FormsModule,
     BrowserAnimationsModule,
   ],

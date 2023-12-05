@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import Chart from 'chart.js/auto';
 import { AnalyticsService } from "../analytics.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,6 +15,7 @@ export class AnalyticsChartComponent {
   @Input() totalCalls: any;
   @Input() totalFailures: any;
   @Input() totalUniqueUsers: any;
+  @Output() helloCallResponseEvent = new EventEmitter<any>();
   ngOnChanges() {
     if (this.startDate && this.endDate) {
       this.handleDateRangeSelection(this.startDate, this.endDate, this.totalCalls, this.totalFailures);
@@ -101,17 +102,16 @@ export class AnalyticsChartComponent {
     const userId = formData.userId;
     const selectedDate = formData.selectedDate;
 
-    console.log(userId);
-    console.log("working");
-    console.log(selectedDate);
     this.analyticsService.postHelloData(userId, selectedDate)
       .subscribe(
         (response) => {
+          this.helloCallResponseEvent.emit();
           this._snackBar.open(response.toString(), '', {
             duration: 3000
           });
         },
         (error) => {
+          this.helloCallResponseEvent.emit();
           let action = 'Error Logged';
           console.error('API Error:', error);
           this._snackBar.open(error.error.toString(),action, {

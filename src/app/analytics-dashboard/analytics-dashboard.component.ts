@@ -92,4 +92,8 @@ export class AnalyticsDashboardComponent {
       this.loadInitialData();
     }
   }
+  handleHelloCallResponseEvent(){
+    console.log("working");
+    this.ngAfterViewInit();
+  }
 }

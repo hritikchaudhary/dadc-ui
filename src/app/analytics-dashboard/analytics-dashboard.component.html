@@ -24,8 +24,11 @@
   </div>
 </div>
 
-<app-analytics-chart [startDate]="startDate" [endDate]="endDate" [totalCalls]="analyticsData.totalResults" [totalFailures]="analyticsData.totalFailures" [totalUniqueUsers]="analyticsData.uniqueUsers"></app-analytics-chart>
+<app-analytics-chart [startDate]="startDate" [endDate]="endDate" [totalCalls]="analyticsData.totalResults"
+  [totalFailures]="analyticsData.totalFailures" [totalUniqueUsers]="analyticsData.uniqueUsers"
+  (helloCallResponseEvent)="handleHelloCallResponseEvent()"></app-analytics-chart>
 
 
-<app-analytics-table [analyticsData]="analyticsData" (pageChangeEvent)="handlePageChange($event)"
-  [dataSource]="dataSource"></app-analytics-table>
+<app-analytics-table [analyticsData]=" analyticsData" (pageChangeEvent)="handlePageChange($event)"
+  [dataSource]="dataSource">
+</app-analytics-table>
