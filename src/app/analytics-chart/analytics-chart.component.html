@@ -51,7 +51,7 @@
     <mat-card-content style="text-align: center; font-size: 20px">
       <mat-icon>analytics</mat-icon> Call Success Rate
       <div class="chart-container-donut">
-        <canvas id="canvas2">{{ donutChart }}</canvas>
+        <canvas id="canvas2" style="margin-bottom: 20px;">{{ donutChart }}</canvas>
       </div>
     </mat-card-content>
   </mat-card>
@@ -60,13 +60,13 @@
     <mat-card class="unique-user-card" style="margin-bottom: 20px">
       <mat-card-content style="text-align: center; font-size: 20px">
         <mat-icon>call</mat-icon> Total Calls
-        <div style="font-size: 100px; margin-top: 65px">{{ totalCalls }}</div>
+        <div style="font-size: 15vh; margin-top: 65px; margin-bottom: 65px; ">{{ totalCalls }}</div>
       </mat-card-content>
     </mat-card>
     <mat-card class="unique-user-card">
       <mat-card-content style="text-align: center; font-size: 20px">
         <mat-icon>group</mat-icon> Unique Users
-        <div style="font-size: 100px; margin-top: 65px">
+        <div style="font-size: 15vh; margin-top: 65px; margin-bottom: 65px; height: 20vh;">
           {{ totalUniqueUsers }}
         </div>
       </mat-card-content>

@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { ContactDetailsComponent } from './contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
     AnalyticsTableComponent,
     TabNavigationComponent,
     AnalyticsChartComponent,
+    ContactDetailsComponent
   ],
   imports: [
     BrowserModule,

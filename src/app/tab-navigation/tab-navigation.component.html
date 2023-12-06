@@ -1,40 +1,5 @@
-<app-analytics-dashboard></app-analytics-dashboard>
-<div class="container">
-  <mat-card class="contact-card">
-    <mat-card-header>
-      <mat-card-title>Get in Touch</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Feel free to contact me via email or download my resume:</p>
-      <mat-card-actions>
-        <a href="mailto:hritikshiwach7@gmail.com" mat-button color="primary">
-          Email Me
-        </a>
-        <a
-          href="https://github.com/hritikchaudhary"
-          target="_blank"
-          mat-button
-          color="primary"
-        >
-          GitHub
-        </a>
-        <a
-          href="https://twitter.com/hritikchaudhry"
-          target="_blank"
-          mat-button
-          color="primary"
-        >
-          Twitter
-        </a>
-        <a
-          href="https://github.com/hritikchaudhary/hritikchaudhary/files/13571979/Hritik_Resume.pdf"
-          download="YourResume.pdf"
-          mat-button
-          color="primary"
-        >
-          Download Resume
-        </a>
-      </mat-card-actions>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-tab-group>
+  <mat-tab label="Dashboard"><app-analytics-dashboard></app-analytics-dashboard></mat-tab>
+  <mat-tab label="Contact"><app-contact-details></app-contact-details></mat-tab>
+</mat-tab-group>
+
