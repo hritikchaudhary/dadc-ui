@@ -9,6 +9,18 @@ The analytics dashboard comprises several key components:
 - **Hello World API**: A basic API that accepts a User ID and generates logs used for analytics.
 - **Analytics Dashboard**: A frontend application built using Angular that visualizes data from the API logs.
 
+## Demo
+[![Demo video](http://img.youtube.com/vi/5_-XuiYp2n8/0.jpg)](http://www.youtube.com/watch?v=5_-XuiYp2n8)
+
+## Screenshots
+<img width="1439" alt="image" src="https://github.com/hritikchaudhary/dadc-ui/assets/33057454/e0f68aeb-bd77-4c24-8405-8d40e95b9ffa">
+<img width="1439" alt="image" src="https://github.com/hritikchaudhary/dadc-ui/assets/33057454/f1c8178c-3395-4473-b22d-0701cd77c4b2">
+<img width="1439" alt="image" src="https://github.com/hritikchaudhary/dadc-ui/assets/33057454/7f9af0e7-8c05-447e-b278-47334fc68515">
+<img width="691" alt="image" src="https://github.com/hritikchaudhary/dadc-ui/assets/33057454/d53dfcdd-a4bc-491c-a3d3-f40b0e9e0533">
+
+
+
+
 ## Features
 
 The dashboard offers the following functionalities:
