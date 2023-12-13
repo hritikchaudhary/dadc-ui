@@ -138,6 +138,9 @@ export class AnalyticsChartComponent {
       (error) => {
         this.helloCallResponseEvent.emit();
         let action = 'Error Logged';
+        if(error.status===429){
+          action = 'Not Logged';
+        }
         console.error('API Error:', error);
         this._snackBar.open(error.error.toString(), action, {
           duration: 3000,
